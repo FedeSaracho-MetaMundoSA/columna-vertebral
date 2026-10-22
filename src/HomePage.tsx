@@ -12,7 +12,7 @@ export default function HomePage() {
       <FloatingNav />
       <Philosophy />
       {/* We can put Services and Map here too */}
-      <div id="servicios" className="container mx-auto px-6 md:px-12 pb-24 pt-20">
+      <div id="servicios" className="container mx-auto px-4 sm:px-6 md:px-12 pb-16 sm:pb-24 pt-10 sm:pt-20">
         <Services />
       </div>
       <div id="map">

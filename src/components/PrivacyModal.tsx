@@ -42,8 +42,8 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
             className="relative w-full max-w-4xl max-h-[85vh] bg-zinc-950 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-[0_0_50px_rgba(168,85,247,0.3)] z-10"
           >
             {/* Header */}
-            <div className="p-6 border-b border-white/10 flex items-center justify-between bg-black/40">
-              <div className="flex items-center gap-3">
+            <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between bg-black/40">
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 <div className="p-2 bg-atlas-violet/20 border border-atlas-violet/30 rounded-xl text-atlas-violet">
                   <ShieldCheck className="w-5 h-5 text-glow-violet" />
                 </div>

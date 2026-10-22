@@ -17,13 +17,21 @@ export default function CinematicIntro({ onComplete }: { onComplete: () => void 
 
   return (
     <motion.div 
-      className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden perspective-[1000px]"
+      className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center overflow-hidden perspective-[1000px] px-4"
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="relative w-full max-w-2xl aspect-square flex items-center justify-center [transform-style:preserve-3d]">
+      {/* Quick Skip button for mobile and desktop */}
+      <button
+        onClick={onComplete}
+        className="fixed top-4 right-4 z-[110] px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 backdrop-blur-md border border-white/20 text-white/80 hover:text-white text-[11px] font-bold uppercase tracking-widest transition-all cursor-pointer"
+      >
+        Saltar Intro
+      </button>
+
+      <div className="relative w-full max-w-2xl max-h-[80vh] aspect-square flex items-center justify-center [transform-style:preserve-3d]">
         {/* Skeleton Spine Visual */}
-        <div className="relative w-full h-full flex flex-col items-center justify-center gap-1 [transform:rotateX(20deg)]">
+        <div className="relative w-full h-full flex flex-col items-center justify-center gap-0.5 sm:gap-1 [transform:rotateX(20deg)]">
           {[...Array(24)].map((_, i) => {
             // Anatomical variations
             const isLumbar = i > 16;

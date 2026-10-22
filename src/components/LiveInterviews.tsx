@@ -327,48 +327,50 @@ export default function LiveInterviews() {
   };
 
   return (
-    <section className="pt-32 pb-24 relative overflow-hidden bg-atlas-dark min-h-screen" id="medios">
+    <section className="pt-20 sm:pt-28 md:pt-32 pb-16 sm:pb-24 relative overflow-hidden bg-atlas-dark min-h-screen" id="medios">
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-atlas-orange/5 blur-[120px] rounded-[100%] pointer-events-none" id="youtube-glow" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-atlas-orange/30 bg-atlas-orange/10 text-atlas-gold text-[10px] font-black uppercase tracking-[3px] mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-atlas-orange/30 bg-atlas-orange/10 text-atlas-gold text-[9.5px] sm:text-[10px] font-black uppercase tracking-[2.5px] sm:tracking-[3px] mb-4 sm:mb-6">
               <Tv className="w-3 h-3" />
               <span>Sincronización Inteligente de Videos</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-3 sm:mb-4 tracking-tighter leading-tight text-white">
               Lic. Villalba en <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-atlas-gold to-atlas-orange">
                 Canal de YouTube
               </span>
             </h2>
-            <p className="text-atlas-white/60 text-lg leading-relaxed font-medium">
+            <p className="text-atlas-white/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
               Educación postural, biomecánica vertebral y entrevistas en vivo sincronizadas con YouTube. Podés sincronizar tu canal o cargar enlaces directamente.
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="flex items-center justify-between w-full md:w-auto gap-3 shrink-0">
             <div className="flex gap-2">
               <button 
                 id="btn-prev-video"
                 onClick={handlePrev}
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 transition-colors text-white"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 active:scale-95 transition-all text-white cursor-pointer"
+                aria-label="Video anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button 
                 id="btn-next-video"
                 onClick={handleNext}
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 transition-colors text-white"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 active:scale-95 transition-all text-white cursor-pointer"
+                aria-label="Video siguiente"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -378,23 +380,23 @@ export default function LiveInterviews() {
 
         {/* Dynamic Status / Error Indicator */}
         {error && (
-          <div className="mb-8 p-6 bg-red-950/40 border border-red-500/30 rounded-2xl text-red-200 text-sm font-medium" id="yt-error-banner">
-            <div className="flex items-start gap-4 mb-4">
-              <AlertCircle className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
+          <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-red-950/40 border border-red-500/30 rounded-2xl text-red-200 text-xs sm:text-sm font-medium" id="yt-error-banner">
+            <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="font-bold text-base">Error en Sincronización Automática con YouTube</p>
-                <p className="opacity-90 text-xs font-mono mt-1 bg-black/30 p-3 rounded-lg border border-red-500/10">
+                <p className="font-bold text-sm sm:text-base">Error en Sincronización Automática con YouTube</p>
+                <p className="opacity-90 text-[11px] sm:text-xs font-mono mt-1 bg-black/30 p-2.5 sm:p-3 rounded-lg border border-red-500/10">
                   {error}
                 </p>
               </div>
             </div>
 
             {/* Clear troubleshooting instructions for Google Cloud developer error */}
-            <div className="border-t border-red-500/20 pt-4 mt-4 space-y-3 text-xs bg-black/20 p-4 rounded-xl">
+            <div className="border-t border-red-500/20 pt-3 sm:pt-4 mt-3 sm:mt-4 space-y-2 sm:space-y-3 text-xs bg-black/20 p-3 sm:p-4 rounded-xl">
               <p className="font-bold text-atlas-gold flex items-center gap-1.5 uppercase tracking-wider text-[10px]">
                 <HelpCircle className="w-4 h-4" /> ¿Por qué ocurre este error y cómo solucionarlo?
               </p>
-              <ul className="list-decimal list-inside space-y-2 opacity-80 pl-1 leading-relaxed">
+              <ul className="list-decimal list-inside space-y-1.5 opacity-80 pl-1 leading-relaxed text-[11px] sm:text-xs">
                 <li>
                   <strong className="text-white">Falta activar la API:</strong> En tu Consola de Google Cloud, debés ir a <strong className="text-white">APIs & Servicios &gt; Biblioteca</strong>, buscar <strong className="text-white">"YouTube Data API v3"</strong> y hacer clic en <strong className="text-white">"Habilitar"</strong>. Sin esto, Google rechaza tu clave API.
                 </li>
@@ -407,13 +409,13 @@ export default function LiveInterviews() {
         )}
 
         {loading ? (
-          <div className="w-full h-96 rounded-[40px] border border-white/5 bg-black/40 flex flex-col items-center justify-center gap-4" id="yt-loading-spinner">
-            <RefreshCw className="w-10 h-10 text-atlas-gold animate-spin" />
-            <p className="text-white/60 text-sm font-mono uppercase tracking-[2px]">Cargando videos del canal...</p>
+          <div className="w-full h-64 sm:h-96 rounded-2xl sm:rounded-[40px] border border-white/5 bg-black/40 flex flex-col items-center justify-center gap-3 sm:gap-4" id="yt-loading-spinner">
+            <RefreshCw className="w-8 h-8 sm:w-10 sm:h-10 text-atlas-gold animate-spin" />
+            <p className="text-white/60 text-xs sm:text-sm font-mono uppercase tracking-[2px]">Cargando videos del canal...</p>
           </div>
         ) : activeVideo ? (
           /* Main Cinema Theater Showcase */
-          <div className="relative w-full rounded-[40px] overflow-hidden glass border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] aspect-video md:aspect-[21/9] bg-black group" id="main-video-player">
+          <div className="relative w-full rounded-2xl sm:rounded-[32px] md:rounded-[40px] overflow-hidden glass border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] aspect-video md:aspect-[21/9] bg-black group" id="main-video-player">
             <iframe
               key={activeVideo.id}
               src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=0&rel=0&modestbranding=1`}
@@ -424,15 +426,15 @@ export default function LiveInterviews() {
             />
 
             {/* Media Information overlay (bottom gradient) */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/40 to-transparent p-6 md:p-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="hidden sm:block absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/40 to-transparent p-4 sm:p-6 md:p-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="max-w-4xl">
                 <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-red-600 text-white font-black text-[9px] uppercase tracking-wider mb-2">
                   <Youtube className="w-3 h-3 fill-current" /> YOUTUBE
                 </span>
-                <h3 className="text-white font-bold text-xl md:text-2xl tracking-tight mb-2 drop-shadow-md">
+                <h3 className="text-white font-bold text-base sm:text-xl md:text-2xl tracking-tight mb-1 sm:mb-2 drop-shadow-md">
                   {activeVideo.title}
                 </h3>
-                <p className="text-white/70 text-xs md:text-sm line-clamp-2 max-w-2xl mb-3 font-medium">
+                <p className="text-white/70 text-xs sm:text-sm line-clamp-2 max-w-2xl mb-2 sm:mb-3 font-medium">
                   {activeVideo.description || 'Sin descripción disponible.'}
                 </p>
                 <div className="flex items-center gap-4 text-xs font-mono text-white/50">
@@ -445,6 +447,20 @@ export default function LiveInterviews() {
             </div>
           </div>
         ) : null}
+
+        {/* Video title caption for mobile below the player */}
+        {activeVideo && (
+          <div className="sm:hidden mt-3 px-1 space-y-1">
+            <h3 className="text-white font-bold text-sm tracking-tight leading-snug">
+              {activeVideo.title}
+            </h3>
+            <p className="text-white/50 text-[11px] flex items-center gap-2">
+              <span className="text-atlas-gold font-mono">{formatDate(activeVideo.publishedAt)}</span>
+              <span>•</span>
+              <span className="text-atlas-teal font-black uppercase text-[9px] tracking-wider">Atlas Quiropraxia</span>
+            </p>
+          </div>
+        )}
 
         {/* Video Playlist Thumbnails Navigation */}
         <div className="mt-8" id="video-playlist-container">

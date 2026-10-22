@@ -112,78 +112,78 @@ export default function EducationalSection() {
   });
 
   return (
-    <section className="pt-32 pb-24 relative overflow-hidden bg-[#050505] min-h-screen" id="educativa">
+    <section className="pt-20 sm:pt-28 md:pt-32 pb-16 sm:pb-24 relative overflow-hidden bg-[#050505] min-h-screen" id="educativa">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-atlas-teal/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-atlas-violet/5 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* The Gift and the Science - Lic. Villalba profile */}
-        <div className="mb-24 flex flex-col lg:flex-row gap-12 items-center">
+        <div className="mb-12 sm:mb-20 md:mb-24 flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
           <div className="w-full lg:w-1/2 relative">
-            <div className="aspect-[4/3] rounded-[40px] overflow-hidden glass border-white/10 relative shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="aspect-[4/3] rounded-2xl sm:rounded-[40px] overflow-hidden glass border-white/10 relative shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <img src="/logo-atlas.jpeg" alt="Lic. Villalba" className="w-full h-full object-cover grayscale opacity-90 mix-blend-lighten" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                <div className="bg-[#050505]/95 backdrop-blur-xl px-6 py-4 rounded-3xl border border-white/20 flex items-center gap-4 shadow-[0_0_30px_rgba(0,0,0,0.8)] w-full">
-                   <div className="w-14 h-14 bg-white rounded-2xl overflow-hidden flex items-center justify-center p-1.5 shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+              <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 flex items-center justify-between">
+                <div className="bg-[#050505]/95 backdrop-blur-xl px-3 py-2.5 sm:px-6 sm:py-4 rounded-2xl sm:rounded-3xl border border-white/20 flex items-center gap-2.5 sm:gap-4 shadow-[0_0_30px_rgba(0,0,0,0.8)] w-full">
+                   <div className="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl overflow-hidden flex items-center justify-center p-1 sm:p-1.5 shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                       <img src="/unc-logo.png" alt="Universidad Nacional de Córdoba" className="w-full h-full object-contain" />
                    </div>
                    <div>
-                     <p className="text-[10px] text-atlas-teal font-black uppercase tracking-[3px] text-glow">Formación de Excelencia</p>
-                     <p className="text-sm font-bold text-white drop-shadow-md">Universidad Nac. de Córdoba</p>
-                     <p className="text-[10px] text-atlas-white/50 font-mono mt-1 font-bold">Matrícula Prof. 542</p>
+                     <p className="text-[8.5px] sm:text-[10px] text-atlas-teal font-black uppercase tracking-[2px] sm:tracking-[3px] text-glow">Formación de Excelencia</p>
+                     <p className="text-xs sm:text-sm font-bold text-white drop-shadow-md">Universidad Nac. de Córdoba</p>
+                     <p className="text-[8.5px] sm:text-[10px] text-atlas-white/50 font-mono mt-0.5 sm:mt-1 font-bold">Matrícula Prof. 542</p>
                    </div>
                 </div>
               </div>
             </div>
             {/* Callout badge */}
             <motion.div 
-               animate={{ y: [0, -10, 0] }}
+               animate={{ y: [0, -6, 0] }}
                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-               className="absolute -top-6 -right-6 lg:-right-12 w-32 h-32 bg-atlas-teal/10 backdrop-blur-xl border border-atlas-teal/30 rounded-full flex flex-col items-center justify-center text-center shadow-[0_0_30px_rgba(20,184,166,0.3)] z-10"
+               className="absolute -top-3 -right-2 sm:-top-6 sm:-right-6 lg:-right-12 w-24 h-24 sm:w-32 sm:h-32 bg-atlas-teal/15 backdrop-blur-xl border border-atlas-teal/30 rounded-full flex flex-col items-center justify-center text-center shadow-[0_0_30px_rgba(20,184,166,0.3)] z-10"
             >
-               <Sparkles className="w-6 h-6 text-atlas-teal mb-1" />
-               <span className="text-[9px] uppercase tracking-widest font-black text-white leading-tight">El Don de la<br/>Sanación</span>
+               <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-atlas-teal mb-0.5 sm:mb-1" />
+               <span className="text-[8px] sm:text-[9px] uppercase tracking-wider sm:tracking-widest font-black text-white leading-tight">El Don de la<br/>Sanación</span>
             </motion.div>
           </div>
 
-          <div className="w-full lg:w-1/2 space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-atlas-violet/30 bg-atlas-violet/10 text-atlas-violet text-[10px] font-black uppercase tracking-[3px]">
+          <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-atlas-violet/30 bg-atlas-violet/10 text-atlas-violet text-[9.5px] sm:text-[10px] font-black uppercase tracking-[2.5px] sm:tracking-[3px]">
               <GraduationCap className="w-3.5 h-3.5" />
               <span>Maestría Clínica</span>
             </div>
             
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-tight text-white uppercase italic">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tighter leading-tight text-white uppercase italic">
               Un don innato <span className="text-atlas-violet">perfeccionado por la ciencia.</span>
             </h2>
             
-            <p className="text-atlas-white/60 text-base md:text-lg leading-relaxed font-medium">
+            <p className="text-atlas-white/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
               Hay quienes aprenden una técnica, y quienes nacen con la sensibilidad absoluta para comprender el cuerpo humano. El Lic. Villalba combina un <strong>don biomecánico natural para la sanación</strong> con una rigurosa formación académica en la Universidad Nacional de Córdoba, creando así un criterio clínico inigualable en todo el norte argentino.
             </p>
             
-            <p className="text-atlas-teal text-sm leading-relaxed italic border-l-2 border-atlas-teal/50 pl-6 py-2 bg-atlas-teal/5 rounded-r-2xl font-medium">
+            <p className="text-atlas-teal text-xs sm:text-sm leading-relaxed italic border-l-2 border-atlas-teal/50 pl-4 sm:pl-6 py-2 bg-atlas-teal/5 rounded-r-2xl font-medium">
               "No se trata de forzar la columna, sino de escucharla. Las manos deben saber exactamente dónde y cómo liberar la tensión para que el cuerpo, con su infinita inteligencia, recupere la postura perdida."
             </p>
           </div>
         </div>
 
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-20" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-12 sm:my-20" />
 
         {/* Knowledge Base Header */}
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
           <div>
-            <h3 className="text-3xl font-black mb-4 tracking-tighter text-white uppercase italic flex items-center gap-4">
+            <h3 className="text-2xl sm:text-3xl font-black mb-2 sm:mb-4 tracking-tighter text-white uppercase italic flex items-center gap-3 sm:gap-4">
               Biblioteca <span className="text-atlas-teal">Atlas</span>
             </h3>
-            <p className="text-atlas-white/50 text-sm max-w-xl leading-relaxed">
+            <p className="text-atlas-white/50 text-xs sm:text-sm max-w-xl leading-relaxed">
               Explora nuestra colección de artículos y guías diseñados para empoderarte con el conocimiento necesario sobre tu biomecánica.
             </p>
           </div>
           
           <div className="w-full md:w-auto relative group">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 left-0 pl-3.5 sm:pl-4 flex items-center pointer-events-none">
               <Search className="w-4 h-4 text-atlas-white/40 group-focus-within:text-atlas-teal transition-colors" />
             </div>
             <input 
@@ -191,31 +191,31 @@ export default function EducationalSection() {
               placeholder="Buscar artículos..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full md:w-[300px] bg-white/5 border border-white/10 text-white text-sm rounded-2xl pl-12 pr-4 py-4 focus:outline-none focus:border-atlas-teal/50 focus:bg-white/10 transition-all font-medium placeholder:text-atlas-white/30"
+              className="w-full md:w-[300px] bg-white/5 border border-white/10 text-white text-xs sm:text-sm rounded-xl sm:rounded-2xl pl-10 sm:pl-12 pr-4 py-3 sm:py-4 focus:outline-none focus:border-atlas-teal/50 focus:bg-white/10 transition-all font-medium placeholder:text-atlas-white/30"
             />
           </div>
         </div>
 
         {/* Categories */}
-        <div className="flex flex-wrap gap-2 mb-12">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-12">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-[2px] transition-all duration-300 flex items-center gap-2 ${
+              className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-[10px] sm:text-[11px] font-black uppercase tracking-[1.5px] sm:tracking-[2px] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 cursor-pointer ${
                 activeCategory === category 
                   ? 'bg-atlas-teal text-atlas-dark shadow-[0_0_20px_rgba(20,184,166,0.3)]' 
                   : 'bg-white/5 text-atlas-white/60 hover:bg-white/10 hover:text-white border border-white/5'
               }`}
             >
-              <Tag className="w-3 h-3" />
+              <Tag className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
               {category}
             </button>
           ))}
         </div>
 
         {/* Article Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <AnimatePresence mode="popLayout">
             {filteredArticles.map((article, idx) => (
               <motion.div
@@ -225,7 +225,7 @@ export default function EducationalSection() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
                 key={article.title}
-                className="group relative rounded-[32px] overflow-hidden glass border-white/5 hover:border-atlas-teal/30 transition-colors h-[400px]"
+                className="group relative rounded-2xl sm:rounded-[32px] overflow-hidden glass border-white/5 hover:border-atlas-teal/30 transition-colors h-[360px] sm:h-[400px]"
               >
                 <div className="absolute inset-0">
                   <img src={article.image} alt={article.title} className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
@@ -233,29 +233,29 @@ export default function EducationalSection() {
                   <div className="absolute inset-0 bg-atlas-dark/40 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="px-3 py-1 bg-atlas-teal/20 text-atlas-teal text-[9px] font-black uppercase tracking-[3px] rounded-lg border border-atlas-teal/20 backdrop-blur-md">
+                <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-end">
+                  <div className="flex justify-between items-center mb-3 sm:mb-4">
+                    <span className="px-2.5 py-1 bg-atlas-teal/20 text-atlas-teal text-[9px] font-black uppercase tracking-[2.5px] sm:tracking-[3px] rounded-lg border border-atlas-teal/20 backdrop-blur-md">
                       {article.category}
                     </span>
-                    <span className="text-[10px] text-atlas-white/50 font-bold tracking-widest uppercase bg-black/50 px-3 py-1 rounded-lg backdrop-blur-md border border-white/10">
+                    <span className="text-[9.5px] sm:text-[10px] text-atlas-white/50 font-bold tracking-wider uppercase bg-black/50 px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/10">
                       {article.readTime}
                     </span>
                   </div>
                   
-                  <h3 className="text-2xl font-black text-white tracking-tight mb-3 group-hover:text-atlas-teal transition-colors leading-tight italic uppercase">
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2 sm:mb-3 group-hover:text-atlas-teal transition-colors leading-tight italic uppercase">
                     {article.title}
                   </h3>
                   
-                  <p className="text-sm text-atlas-white/70 leading-relaxed font-medium mb-6 line-clamp-2">
+                  <p className="text-xs sm:text-sm text-atlas-white/70 leading-relaxed font-medium mb-4 sm:mb-6 line-clamp-2">
                     {article.excerpt}
                   </p>
                   
-                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[2px] text-white w-max">
-                    <span className="w-8 h-8 rounded-full bg-atlas-teal/20 flex items-center justify-center group-hover:bg-atlas-teal group-hover:text-atlas-dark transition-colors">
+                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[2px] text-white w-max cursor-pointer">
+                    <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-atlas-teal/20 flex items-center justify-center group-hover:bg-atlas-teal group-hover:text-atlas-dark transition-colors">
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
-                    <span className="group-hover:tracking-[4px] transition-all">Leer Artículo Complet...</span>
+                    <span className="group-hover:tracking-[3px] transition-all">Leer Artículo</span>
                   </button>
                 </div>
               </motion.div>

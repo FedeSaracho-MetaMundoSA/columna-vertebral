@@ -26,11 +26,12 @@ import {
   SidebarMenuButton, 
   SidebarMenuItem,
   SidebarHeader,
-  SidebarFooter
+  SidebarFooter,
+  useSidebar
 } from '@/components/ui/sidebar';
 
 const mainSections = [
-  { title: "INICIO ", icon: Stethoscope, url: "/" },
+  { title: "INICIO", icon: Stethoscope, url: "/" },
   { title: "GLOSARIO", icon: Activity, url: "/patologias" },
   { title: "VIDEOS / ENTREVISTAS", icon: Video, url: "/programaciones" },
   { title: "SECCIÓN EDUCATIVA", icon: BookOpen, url: "/academia" },
@@ -43,10 +44,16 @@ const clinicInfo = [
 ];
 
 export function AtlasSidebar() {
+  const { setOpenMobile, setOpen } = useSidebar();
+  const handleNavClick = () => {
+    setOpenMobile(false);
+    setOpen(false);
+  };
+
   return (
     <Sidebar side="right" className="glass border-l border-white/10 bg-atlas-dark/95 backdrop-blur-2xl">
-      <SidebarHeader className="p-6 border-b border-white/5">
-        <Link to="/" className="flex items-center gap-3">
+      <SidebarHeader className="p-4 sm:p-6 border-b border-white/5">
+        <Link to="/" onClick={handleNavClick} className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
             <img src="/logo-atlas.jpeg" alt="ATLAS Logo" className="w-full h-full object-cover" />
           </div>
@@ -57,18 +64,18 @@ export function AtlasSidebar() {
         </Link>
       </SidebarHeader>
 
-      <SidebarContent className="p-4 space-y-6">
+      <SidebarContent className="p-3 sm:p-4 space-y-4 sm:space-y-6">
         {/* MAIN NAVIGATION */}
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[10px] text-atlas-white/30 uppercase tracking-[3px] font-bold mb-4">Navegación Profesional</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[10px] text-atlas-white/30 uppercase tracking-[3px] font-bold mb-3 sm:mb-4">Navegación Profesional</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainSections.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="hover:bg-atlas-violet/10 h-12 rounded-xl transition-all group">
-                    <Link to={item.url} className="flex items-center gap-4 px-3">
+                  <SidebarMenuButton asChild className="hover:bg-atlas-violet/10 h-11 sm:h-12 rounded-xl transition-all group">
+                    <Link to={item.url} onClick={handleNavClick} className="flex items-center gap-3 sm:gap-4 px-3">
                       <item.icon className="w-5 h-5 text-atlas-violet group-hover:scale-110 transition-transform" />
-                      <span className="text-[13px] font-black text-white/80 group-hover:text-white uppercase tracking-wider">{item.title}</span>
+                      <span className="text-xs sm:text-[13px] font-black text-white/80 group-hover:text-white uppercase tracking-wider">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

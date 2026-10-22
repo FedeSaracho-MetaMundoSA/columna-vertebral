@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-atlas-dark text-white py-16 px-6 md:px-12 relative overflow-hidden selection:bg-atlas-violet selection:text-white">
+    <div className="min-h-screen bg-atlas-dark text-white pt-20 sm:pt-24 pb-16 px-4 sm:px-6 md:px-12 relative overflow-hidden selection:bg-atlas-violet selection:text-white">
       {/* Background Cybernetic Matrix lines */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-atlas-violet/15 via-transparent to-transparent pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-atlas-violet/50 to-transparent" />

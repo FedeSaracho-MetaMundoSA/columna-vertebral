@@ -85,25 +85,25 @@ export default function Pathologies() {
   const [selectedCondition, setSelectedCondition] = useState<string | null>(null);
 
   return (
-    <section className="pt-32 pb-24 relative overflow-hidden bg-black min-h-screen" id="enciclopedia">
+    <section className="pt-20 sm:pt-28 md:pt-32 pb-16 sm:pb-24 relative overflow-hidden bg-black min-h-screen" id="enciclopedia">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-atlas-teal/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-atlas-orange/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute inset-0 mesh-bg opacity-30 pointer-events-none" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="mb-20">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        <div className="mb-10 sm:mb-16 md:mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 border-b border-white/10 pb-8 sm:pb-12">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-atlas-white/80 text-[10px] font-black uppercase tracking-[3px] mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-atlas-white/80 text-[9.5px] sm:text-[10px] font-black uppercase tracking-[2.5px] sm:tracking-[3px] mb-4 sm:mb-6">
                 <Dna className="w-3 h-3 text-atlas-teal" />
                 <span>Enciclopedia Clínica Atlas</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-white uppercase italic mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter leading-tight text-white uppercase italic mb-4 sm:mb-6">
                 Condiciones & Tratamientos <br/>
                 <span className="text-atlas-teal">Avanzados.</span>
               </h2>
-              <p className="text-atlas-white/60 text-lg leading-relaxed font-medium">
+              <p className="text-atlas-white/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
                 Un compendio profesional exhaustivo sobre las patologías, abordajes terapéuticos preventivos y protocolos correctivos implementados por el Lic. Villalba, orientados a brindar alternativas fiables y contundentes a cirugías o bloqueos inyectables.
               </p>
             </div>
@@ -111,18 +111,18 @@ export default function Pathologies() {
         </div>
 
         {/* Procedures Grid */}
-        <div className="mb-24">
-          <h3 className="text-2xl font-black uppercase text-white tracking-widest italic mb-8 flex items-center gap-3">
-            <Bone className="text-atlas-teal" /> Protocolos de Tratamiento
+        <div className="mb-14 sm:mb-20 md:mb-24">
+          <h3 className="text-lg sm:text-2xl font-black uppercase text-white tracking-wider sm:tracking-widest italic mb-6 sm:mb-8 flex items-center gap-2.5 sm:gap-3">
+            <Bone className="text-atlas-teal w-5 h-5 sm:w-6 sm:h-6" /> Protocolos de Tratamiento
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
             {encyclopedicData.procedures.map((proc, i) => (
-              <div key={i} className="glass p-6 rounded-3xl border border-white/5 hover:border-atlas-teal/30 transition-colors bg-gradient-to-b from-white/5 to-transparent flex flex-col justify-between">
+              <div key={i} className="glass p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/5 hover:border-atlas-teal/30 transition-colors bg-gradient-to-b from-white/5 to-transparent flex flex-col justify-between">
                 <div>
-                   <h4 className="text-sm font-black text-white uppercase tracking-wider mb-4 leading-normal">{proc.title}</h4>
+                   <h4 className="text-sm font-black text-white uppercase tracking-wider mb-2.5 sm:mb-4 leading-normal">{proc.title}</h4>
                    <p className="text-xs text-atlas-white/50 leading-relaxed font-medium">{proc.desc}</p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-white/5 flex w-full justify-between items-center text-[10px] text-atlas-teal font-black uppercase tracking-[2px]">
+                <div className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-white/5 flex w-full justify-between items-center text-[9.5px] sm:text-[10px] text-atlas-teal font-black uppercase tracking-[2px]">
                    MÉTODO ATLAS <ArrowRight className="w-3 h-3" />
                 </div>
               </div>
@@ -131,10 +131,10 @@ export default function Pathologies() {
         </div>
 
         {/* Pathologies Section */}
-        <h3 className="text-2xl font-black uppercase text-white tracking-widest italic mb-8 flex items-center gap-3">
-          <Activity className="text-atlas-orange" /> Índice de Patologías
+        <h3 className="text-lg sm:text-2xl font-black uppercase text-white tracking-wider sm:tracking-widest italic mb-6 sm:mb-8 flex items-center gap-2.5 sm:gap-3">
+          <Activity className="text-atlas-orange w-5 h-5 sm:w-6 sm:h-6" /> Índice de Patologías
         </h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
           {encyclopedicData.pathologies.map((group, idx) => (
             <motion.div
               key={idx}
@@ -142,31 +142,31 @@ export default function Pathologies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass p-8 rounded-[40px] border border-white/5 bg-gradient-to-br from-white/5 to-transparent relative overflow-hidden"
+              className="glass p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-[36px] border border-white/5 bg-gradient-to-br from-white/5 to-transparent relative overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
-                 <div className={`w-16 h-16 rounded-3xl ${group.bg} border border-white/5 flex flex-shrink-0 items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.05)]`}>
-                   <group.icon className={`w-8 h-8 ${group.color}`} />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+                 <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl ${group.bg} border border-white/5 flex flex-shrink-0 items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.05)]`}>
+                   <group.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${group.color}`} />
                  </div>
                  <div>
-                   <h3 className="text-xl font-bold text-white tracking-tight uppercase italic drop-shadow-md mb-2">{group.category}</h3>
-                   <p className="text-sm text-atlas-white/60 font-medium leading-relaxed">{group.description}</p>
+                   <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight uppercase italic drop-shadow-md mb-1 sm:mb-2">{group.category}</h3>
+                   <p className="text-xs sm:text-sm text-atlas-white/60 font-medium leading-relaxed">{group.description}</p>
                  </div>
               </div>
               
-              <ul className="space-y-3 relative z-10">
+              <ul className="space-y-2.5 sm:space-y-3 relative z-10">
                 {group.conditions.map((item, idj) => (
                   <li 
                     key={idj} 
-                    className="flex flex-col p-4 rounded-2xl border border-white/5 bg-black/40 hover:bg-white/5 transition-colors cursor-pointer group/item"
+                    className="flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-white/5 bg-black/40 hover:bg-white/5 transition-colors cursor-pointer group/item"
                     onClick={() => setSelectedCondition(selectedCondition === item.name ? null : item.name)}
                   >
                     <div className="flex items-center justify-between w-full">
-                       <div className="flex items-center gap-3">
-                         <div className={`w-6 h-6 rounded-full flex items-center justify-center ${group.bg} group-hover/item:scale-110 transition-transform`}>
-                           <CheckCircle2 className={`w-3.5 h-3.5 ${group.color}`} />
+                       <div className="flex items-center gap-2.5 sm:gap-3">
+                         <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center ${group.bg} group-hover/item:scale-110 transition-transform shrink-0`}>
+                           <CheckCircle2 className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${group.color}`} />
                          </div>
-                         <span className="text-sm text-white font-bold tracking-wide">{item.name}</span>
+                         <span className="text-xs sm:text-sm text-white font-bold tracking-wide">{item.name}</span>
                        </div>
                        <motion.div 
                          initial={false}

@@ -23,8 +23,8 @@ export default function MarketingBanner() {
   }, [index]);
 
   return (
-    <div className="w-full py-4 overflow-hidden relative border-y border-white/5 bg-atlas-dark/60 backdrop-blur-md">
-      <div className="container mx-auto px-4 flex justify-center items-center h-12">
+    <div className="w-full py-3 sm:py-4 overflow-hidden relative border-y border-white/5 bg-atlas-dark/75 backdrop-blur-md">
+      <div className="container mx-auto px-4 flex justify-center items-center min-h-[44px] h-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -32,9 +32,9 @@ export default function MarketingBanner() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.4 }}
-            className="flex items-center gap-6"
+            className="flex items-center justify-center px-2"
           >
-            <h3 className="text-white font-black text-sm md:text-2xl tracking-[3px] md:tracking-[8px] text-center uppercase">
+            <h3 className="text-white font-black text-xs sm:text-base md:text-2xl tracking-[1.5px] sm:tracking-[4px] md:tracking-[8px] text-center uppercase leading-snug">
               {messages[index]}
             </h3>
           </motion.div>

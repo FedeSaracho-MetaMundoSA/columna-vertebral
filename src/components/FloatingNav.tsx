@@ -19,31 +19,31 @@ export default function FloatingNav() {
   if (isHome) {
     // Inline grid version for the Homepage, placed right above "Nuestra Misión"
     return (
-      <div className="w-full flex justify-center py-10 bg-atlas-dark relative z-20 px-4 md:px-6" id="homepage-nav-container">
+      <div className="w-full flex justify-center py-6 sm:py-10 bg-atlas-dark relative z-20 px-3 sm:px-4 md:px-6" id="homepage-nav-container">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="w-full max-w-4xl p-1.5 rounded-3xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
+          className="w-full max-w-4xl p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl bg-black/80 backdrop-blur-xl border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
           id="homepage-nav-dock"
         >
           {/* 2x2 grid on mobile/tablet, 4 columns on desktop */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 sm:gap-2">
             {navItems.map((item) => {
               const isActive = item.path === '/';
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`relative flex flex-col items-center justify-center gap-2 px-4 py-6 rounded-2xl transition-all border cursor-pointer text-center group
+                  className={`relative flex flex-col items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-3 sm:py-6 rounded-xl sm:rounded-2xl transition-all border cursor-pointer text-center group
                     ${isActive 
                       ? 'bg-white/5 border-white/15' 
                       : 'bg-transparent border-transparent hover:border-white/10 hover:bg-white/5'}`}
                   id={`floating-nav-btn-${item.name.toLowerCase().replace(' ', '-')}`}
                 >
                   <item.icon 
-                    className={`w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300 relative z-10
+                    className={`w-5 h-5 sm:w-7 sm:h-7 transition-all duration-300 relative z-10
                       ${isActive 
                         ? 'text-atlas-gold drop-shadow-[0_0_10px_rgba(253,185,49,0.5)]' 
                         : item.name === 'Videos'
@@ -52,14 +52,14 @@ export default function FloatingNav() {
                   />
                   
                   <span 
-                    className={`text-[10px] sm:text-xs font-black uppercase tracking-wider relative z-10 transition-colors duration-300
+                    className={`text-[9.5px] sm:text-xs font-black uppercase tracking-wider relative z-10 transition-colors duration-300
                       ${isActive ? 'text-white font-black' : 'text-neutral-500 group-hover:text-neutral-300'}`}
                   >
                     {item.name}
                   </span>
 
                   {isActive && (
-                    <span className="absolute bottom-2.5 w-1.5 h-1.5 rounded-full bg-atlas-gold shadow-[0_0_8px_rgba(253,185,49,0.8)]" />
+                    <span className="absolute bottom-1.5 sm:bottom-2.5 w-1.5 h-1.5 rounded-full bg-atlas-gold shadow-[0_0_8px_rgba(253,185,49,0.8)]" />
                   )}
                 </Link>
               );
@@ -76,7 +76,7 @@ export default function FloatingNav() {
       initial={{ y: 100, x: '-50%', opacity: 0 }}
       animate={{ y: 0, x: '-50%', opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.6, type: 'spring', stiffness: 100 }}
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-2 py-1.5 xs:px-3 xs:py-2 md:px-6 md:py-3 rounded-2xl bg-black/85 backdrop-blur-xl border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.8)] flex items-center gap-1 sm:gap-2 md:gap-3 max-w-[95vw]"
+      className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 px-2 py-1 sm:px-3 sm:py-2 md:px-6 md:py-3 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.8)] flex items-center gap-1 sm:gap-2 md:gap-3 max-w-[94vw]"
       id="floating-nav-dock"
     >
       {navItems.map((item) => {
