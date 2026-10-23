@@ -23,86 +23,83 @@ import HomePage from './HomePage';
 import PrivacyModal from './components/PrivacyModal';
 import FloatingNav from './components/FloatingNav';
 
-function GlobalBackButton() {
+function GlobalTopNav() {
   const location = useLocation();
   const currentPath = location.pathname;
-
-  // Render on all pages except the homepage
-  if (currentPath === '/') return null;
-
-  return (
-    <nav className="fixed top-4 left-4 sm:top-6 sm:left-6 md:left-8 z-40 pointer-events-none">
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        className="pointer-events-auto"
-      >
-        <Link
-          to="/"
-          className="flex items-center gap-1.5 sm:gap-2 bg-atlas-dark/85 backdrop-blur-xl border border-white/10 hover:border-atlas-gold px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl transition-all shadow-[0_10px_25px_rgba(0,0,0,0.5)] group active:scale-95 cursor-pointer"
-          id="global-back-button"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-atlas-gold group-hover:-translate-x-1 transition-transform" />
-          <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-white">
-            Volver
-          </span>
-        </Link>
-      </motion.div>
-    </nav>
-  );
-}
-
-function LogoTrigger() {
+  const isHome = currentPath === '/';
   const { toggleSidebar, open } = useSidebar();
 
   return (
-    <motion.button
-      onClick={toggleSidebar}
-      className="pointer-events-auto relative group cursor-pointer"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      aria-label="Menú Atlas"
-    >
-      <div className="flex items-center gap-2.5 sm:gap-4 bg-atlas-dark/80 backdrop-blur-xl led-border p-1.5 sm:p-2 pr-3 sm:pr-6 rounded-xl sm:rounded-2xl hover:border-atlas-gold transition-colors">
-        <div className="w-9 h-9 sm:w-12 sm:h-12 bg-white rounded-lg sm:rounded-xl flex items-center justify-center overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(253,185,49,0.3)] shrink-0">
+    <header className="fixed top-0 inset-x-0 z-40 bg-atlas-dark/90 backdrop-blur-xl border-b border-white/10 px-3 sm:px-6 md:px-8 h-14 sm:h-16 flex items-center justify-between transition-all">
+      <div className="flex items-center gap-2 sm:gap-3">
+        {!isHome && (
+          <Link
+            to="/"
+            className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 active:scale-95 px-2.5 py-1.5 rounded-xl border border-white/10 text-white text-[11px] sm:text-xs font-black uppercase tracking-wider transition-all cursor-pointer mr-1"
+            id="global-back-button"
+            aria-label="Volver al inicio"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 text-atlas-gold" />
+            <span className="hidden xs:inline">Volver</span>
+          </Link>
+        )}
+        <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group cursor-pointer">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl overflow-hidden bg-white border border-white/10 shadow-[0_0_15px_rgba(253,185,49,0.3)] shrink-0">
+            <img src="/logo-atlas.jpeg" alt="ATLAS Logo" className="w-full h-full object-cover" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm sm:text-base font-black tracking-tight text-white leading-none group-hover:text-atlas-gold transition-colors">
+              ATLAS
+            </span>
+            <span className="text-[7.5px] sm:text-[9px] uppercase tracking-[1.5px] sm:tracking-[2px] text-atlas-teal font-extrabold leading-none mt-0.5">
+              Columna Vertebral
+            </span>
+          </div>
+        </Link>
+      </div>
+
+      <div className="flex items-center gap-2 sm:gap-3">
+        <button
+          onClick={() => window.open('https://wa.me/5493874816999?text=Hola!%20Quiero%20solicitar%20un%20turno%20o%20hacer%20una%20consulta', '_blank')}
+          className="flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-green-600 hover:bg-green-500 text-white text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-[0_0_15px_rgba(22,163,74,0.3)] active:scale-95 transition-all cursor-pointer"
+        >
+          <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+          <span className="hidden sm:inline">Pedir Turno</span>
+          <span className="inline sm:hidden">Turnos</span>
+        </button>
+
+        <button
+          onClick={toggleSidebar}
+          className="flex items-center gap-1.5 sm:gap-2 bg-white/10 hover:bg-white/15 border border-white/10 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-white active:scale-95 transition-all cursor-pointer"
+          aria-label="Menú Atlas"
+        >
           <AnimatePresence mode="wait">
             {open ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                className="text-atlas-dark"
-              >
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
-              </motion.div>
+              <X className="w-4 h-4 sm:w-5 sm:h-5 text-atlas-orange" />
             ) : (
-              <img
-                src="/logo-atlas.jpeg"
-                alt="ATLAS Logo"
-                className="w-full h-full object-cover"
-              />
+              <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-atlas-teal" />
             )}
           </AnimatePresence>
-        </div>
-        <div className="flex flex-col items-start">
-          <span className="text-sm sm:text-lg font-black tracking-tighter text-white leading-none">ATLAS</span>
-          <span className="text-[8px] sm:text-[9px] uppercase tracking-[1.5px] sm:tracking-[2px] text-atlas-orange font-bold">
-            <span className="inline sm:hidden">Menú</span>
-            <span className="hidden sm:inline">Menu Interactivo</span>
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-white">
+            Menú
           </span>
-        </div>
+        </button>
       </div>
-    </motion.button>
+    </header>
   );
 }
 
 export default function App() {
   const location = useLocation();
-  const [introComplete, setIntroComplete] = React.useState(false);
+  const [introComplete, setIntroComplete] = React.useState(() => {
+    return sessionStorage.getItem('atlas_intro_seen') === 'true';
+  });
   const [isPrivacyOpen, setIsPrivacyOpen] = React.useState(false);
-  console.log('App rendering, introComplete:', introComplete);
+
+  const handleIntroComplete = () => {
+    sessionStorage.setItem('atlas_intro_seen', 'true');
+    setIntroComplete(true);
+  };
 
   React.useEffect(() => {
     const handleOpen = () => setIsPrivacyOpen(true);
@@ -115,20 +112,14 @@ export default function App() {
       <div className="relative min-h-screen bg-atlas-dark selection:bg-atlas-teal selection:text-atlas-dark overflow-x-hidden flex w-full">
           <AnimatePresence>
             {!introComplete && (
-              <CinematicIntro onComplete={() => setIntroComplete(true)} />
+              <CinematicIntro onComplete={handleIntroComplete} />
             )}
           </AnimatePresence>
 
           <div className="flex-1 relative">
             <div className="fixed inset-0 mesh-bg pointer-events-none z-[-10]" />
             
-            <nav className="fixed top-4 right-4 sm:top-6 sm:right-6 md:right-8 z-40 pointer-events-none">
-              <div className="flex justify-end items-center pointer-events-none">
-                <LogoTrigger />
-              </div>
-            </nav>
-
-            <GlobalBackButton />
+            <GlobalTopNav />
 
             <main className="relative z-10 w-full">
               <Routes>

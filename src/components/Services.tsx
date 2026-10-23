@@ -177,15 +177,17 @@ export default function Services() {
         </div>
 
         {/* Video de Juan Atlas - YouTube Channel */}
-        <div className="flex-1 min-h-[220px] sm:min-h-[300px] xl:min-h-0 flex flex-col">
+        <div className="flex-1 w-full flex flex-col justify-center">
           <div className="mb-2 flex items-center justify-between px-1">
-            <span className="text-[9.5px] sm:text-[10px] font-mono text-zinc-500 uppercase tracking-wider sm:tracking-widest">VIDEO DE NUESTRO CANAL</span>
-            <span className="inline-flex items-center gap-1 text-[9px] text-[#FF9900] font-black uppercase tracking-wider">
+            <span className="text-[9.5px] sm:text-[10px] font-mono text-neutral-400 uppercase tracking-wider sm:tracking-widest font-bold">
+              VIDEO DEL CANAL OFICIAL
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-[9px] text-amber-400 font-black uppercase tracking-wider bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
               EN VIVO
             </span>
           </div>
-          <div className="flex-1 w-full rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video xl:aspect-auto xl:h-full min-h-[200px] sm:min-h-[250px] bg-black group">
+          <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video bg-black">
             <iframe
               src="https://www.youtube.com/embed/G5EDsdT9RLc?autoplay=0&rel=0&modestbranding=1"
               title="Quiropraxia de Alta Precisión y Descompresión Vertebral - Lic. Juan Antonio Villalba"

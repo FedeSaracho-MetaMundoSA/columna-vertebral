@@ -334,45 +334,56 @@ export default function LiveInterviews() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 sm:mb-10 gap-4 sm:gap-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-atlas-orange/30 bg-atlas-orange/10 text-atlas-gold text-[9.5px] sm:text-[10px] font-black uppercase tracking-[2.5px] sm:tracking-[3px] mb-4 sm:mb-6">
-              <Tv className="w-3 h-3" />
-              <span>Sincronización Inteligente de Videos</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-atlas-orange/30 bg-atlas-orange/10 text-atlas-gold text-[9.5px] sm:text-[10px] font-black uppercase tracking-[2px] sm:tracking-[3px] mb-3 sm:mb-4">
+              <Tv className="w-3 h-3 text-atlas-gold" />
+              <span>Canal Oficial de Videos</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-3 sm:mb-4 tracking-tighter leading-tight text-white">
-              Lic. Villalba en <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-atlas-gold to-atlas-orange">
-                Canal de YouTube
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black mb-2 sm:mb-3 tracking-tight leading-tight text-white">
+              Lic. Villalba en{' '}
+              <span className="text-amber-400 inline-block">
+                YouTube
               </span>
             </h2>
-            <p className="text-atlas-white/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
-              Educación postural, biomecánica vertebral y entrevistas en vivo sincronizadas con YouTube. Podés sincronizar tu canal o cargar enlaces directamente.
+            <p className="text-neutral-300 text-xs sm:text-base leading-relaxed font-medium">
+              Educación postural, biomecánica vertebral y entrevistas en vivo. Podés seleccionar cualquier video de la lista para reproducirlo aquí.
             </p>
           </motion.div>
 
-          <div className="flex items-center justify-between w-full md:w-auto gap-3 shrink-0">
+          <div className="flex items-center justify-between w-full md:w-auto gap-2.5 shrink-0">
+            {/* Quick Settings & Config Modal Button */}
+            <button
+              onClick={() => setIsConfigOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white text-xs font-bold uppercase tracking-wider active:scale-95 transition-all cursor-pointer"
+              title="Configurar fuente de videos"
+            >
+              <Settings className="w-4 h-4 text-atlas-gold" />
+              <span>Configurar</span>
+            </button>
+
+            {/* Navigation Arrows */}
             <div className="flex gap-2">
               <button 
                 id="btn-prev-video"
                 onClick={handlePrev}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 active:scale-95 transition-all text-white cursor-pointer"
+                className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 active:scale-95 transition-all text-white cursor-pointer"
                 aria-label="Video anterior"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
               <button 
                 id="btn-next-video"
                 onClick={handleNext}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 active:scale-95 transition-all text-white cursor-pointer"
+                className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl border border-white/10 flex items-center justify-center hover:bg-atlas-orange/10 hover:border-atlas-orange/30 active:scale-95 transition-all text-white cursor-pointer"
                 aria-label="Video siguiente"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
@@ -380,42 +391,36 @@ export default function LiveInterviews() {
 
         {/* Dynamic Status / Error Indicator */}
         {error && (
-          <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-red-950/40 border border-red-500/30 rounded-2xl text-red-200 text-xs sm:text-sm font-medium" id="yt-error-banner">
-            <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
-              <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 shrink-0 mt-0.5" />
+          <div className="mb-6 sm:mb-8 p-4 sm:p-5 bg-red-950/40 border border-red-500/30 rounded-2xl text-red-200 text-xs sm:text-sm font-medium" id="yt-error-banner">
+            <div className="flex items-start gap-3 mb-3">
+              <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="font-bold text-sm sm:text-base">Error en Sincronización Automática con YouTube</p>
-                <p className="opacity-90 text-[11px] sm:text-xs font-mono mt-1 bg-black/30 p-2.5 sm:p-3 rounded-lg border border-red-500/10">
+                <p className="font-bold text-sm">Error en Sincronización Automática con YouTube</p>
+                <p className="opacity-90 text-[11px] font-mono mt-1 bg-black/30 p-2.5 rounded-lg border border-red-500/10">
                   {error}
                 </p>
               </div>
             </div>
 
-            {/* Clear troubleshooting instructions for Google Cloud developer error */}
-            <div className="border-t border-red-500/20 pt-3 sm:pt-4 mt-3 sm:mt-4 space-y-2 sm:space-y-3 text-xs bg-black/20 p-3 sm:p-4 rounded-xl">
+            <div className="border-t border-red-500/20 pt-3 mt-3 space-y-1.5 text-xs bg-black/20 p-3 rounded-xl">
               <p className="font-bold text-atlas-gold flex items-center gap-1.5 uppercase tracking-wider text-[10px]">
-                <HelpCircle className="w-4 h-4" /> ¿Por qué ocurre este error y cómo solucionarlo?
+                <HelpCircle className="w-4 h-4" /> Solución recomendada:
               </p>
-              <ul className="list-decimal list-inside space-y-1.5 opacity-80 pl-1 leading-relaxed text-[11px] sm:text-xs">
-                <li>
-                  <strong className="text-white">Falta activar la API:</strong> En tu Consola de Google Cloud, debés ir a <strong className="text-white">APIs & Servicios &gt; Biblioteca</strong>, buscar <strong className="text-white">"YouTube Data API v3"</strong> y hacer clic en <strong className="text-white">"Habilitar"</strong>. Sin esto, Google rechaza tu clave API.
-                </li>
-                <li>
-                  <strong className="text-white">Usa la Carga Manual Rápida:</strong> Si no querés lidiar con la consola de Google Cloud, hace clic en el botón de arriba <strong className="text-white">"Configurar Videos"</strong> y elegí la pestaña <strong className="text-white">"Carga Manual"</strong>. Podés pegar cualquier enlace de YouTube directamente gratis y sin credenciales.
-                </li>
-              </ul>
+              <p className="text-[11px] opacity-80 leading-relaxed">
+                Podés usar el botón <strong className="text-white">"Configurar"</strong> y seleccionar la pestaña <strong className="text-white">"Carga Manual (Fácil)"</strong> para agregar cualquier enlace de YouTube al instante.
+              </p>
             </div>
           </div>
         )}
 
         {loading ? (
-          <div className="w-full h-64 sm:h-96 rounded-2xl sm:rounded-[40px] border border-white/5 bg-black/40 flex flex-col items-center justify-center gap-3 sm:gap-4" id="yt-loading-spinner">
-            <RefreshCw className="w-8 h-8 sm:w-10 sm:h-10 text-atlas-gold animate-spin" />
-            <p className="text-white/60 text-xs sm:text-sm font-mono uppercase tracking-[2px]">Cargando videos del canal...</p>
+          <div className="w-full aspect-video rounded-2xl sm:rounded-3xl border border-white/5 bg-black/40 flex flex-col items-center justify-center gap-3" id="yt-loading-spinner">
+            <RefreshCw className="w-8 h-8 text-atlas-gold animate-spin" />
+            <p className="text-white/60 text-xs font-mono uppercase tracking-[2px]">Cargando videos del canal...</p>
           </div>
         ) : activeVideo ? (
-          /* Main Cinema Theater Showcase */
-          <div className="relative w-full rounded-2xl sm:rounded-[32px] md:rounded-[40px] overflow-hidden glass border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] aspect-video md:aspect-[21/9] bg-black group" id="main-video-player">
+          /* Main Cinema Theater Showcase - True Fluid 16:9 */
+          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-video bg-black group" id="main-video-player">
             <iframe
               key={activeVideo.id}
               src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=0&rel=0&modestbranding=1`}
@@ -424,93 +429,131 @@ export default function LiveInterviews() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
-
-            {/* Media Information overlay (bottom gradient) */}
-            <div className="hidden sm:block absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/40 to-transparent p-4 sm:p-6 md:p-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="max-w-4xl">
-                <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-red-600 text-white font-black text-[9px] uppercase tracking-wider mb-2">
-                  <Youtube className="w-3 h-3 fill-current" /> YOUTUBE
-                </span>
-                <h3 className="text-white font-bold text-base sm:text-xl md:text-2xl tracking-tight mb-1 sm:mb-2 drop-shadow-md">
-                  {activeVideo.title}
-                </h3>
-                <p className="text-white/70 text-xs sm:text-sm line-clamp-2 max-w-2xl mb-2 sm:mb-3 font-medium">
-                  {activeVideo.description || 'Sin descripción disponible.'}
-                </p>
-                <div className="flex items-center gap-4 text-xs font-mono text-white/50">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3 text-atlas-gold"/> {formatDate(activeVideo.publishedAt)}
-                  </span>
-                  <span>ATLAS QUIROPRAXIA</span>
-                </div>
-              </div>
-            </div>
           </div>
         ) : null}
 
-        {/* Video title caption for mobile below the player */}
+        {/* Video title caption & metadata below the player */}
         {activeVideo && (
-          <div className="sm:hidden mt-3 px-1 space-y-1">
-            <h3 className="text-white font-bold text-sm tracking-tight leading-snug">
-              {activeVideo.title}
-            </h3>
-            <p className="text-white/50 text-[11px] flex items-center gap-2">
-              <span className="text-atlas-gold font-mono">{formatDate(activeVideo.publishedAt)}</span>
-              <span>•</span>
-              <span className="text-atlas-teal font-black uppercase text-[9px] tracking-wider">Atlas Quiropraxia</span>
-            </p>
+          <div className="mt-3.5 sm:mt-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+            <div className="space-y-1 flex-1">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-red-600 text-white font-black text-[9px] uppercase tracking-wider">
+                  <Youtube className="w-3 h-3 fill-current" /> YOUTUBE
+                </span>
+                <span className="text-[10px] text-atlas-gold font-mono font-bold flex items-center gap-1">
+                  <Calendar className="w-3 h-3" /> {formatDate(activeVideo.publishedAt)}
+                </span>
+              </div>
+              <h3 className="text-white font-bold text-sm sm:text-base md:text-lg tracking-tight leading-snug">
+                {activeVideo.title}
+              </h3>
+              {activeVideo.description && (
+                <p className="text-neutral-400 text-xs line-clamp-2 font-medium">
+                  {activeVideo.description}
+                </p>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-white/5">
+              <a
+                href={`https://www.youtube.com/watch?v=s/${activeVideo.id}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider transition-colors"
+              >
+                <span>Ver en YouTube</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
         )}
 
-        {/* Video Playlist Thumbnails Navigation */}
-        <div className="mt-8" id="video-playlist-container">
+        {/* Video Playlist Stacked Cards - Responsively adapted for Mobile & Desktop */}
+        <div className="mt-8 sm:mt-12" id="video-playlist-container">
           <div className="flex justify-between items-center mb-4">
-            <h4 className="text-[11px] uppercase tracking-[4px] text-atlas-white/40 font-black italic">
-              {mode === 'manual' ? 'Lista de Videos Manuales' : 'Lista de Reproducción'}
-            </h4>
-            {mode === 'manual' && (
-              <span className="text-[10px] bg-atlas-gold/10 text-atlas-gold border border-atlas-gold/20 px-2 py-1 rounded-md font-bold uppercase tracking-wider">
-                Podés eliminar videos tocando la cruz (X)
-              </span>
-            )}
+            <div>
+              <h4 className="text-xs uppercase tracking-[3px] text-atlas-gold font-black">
+                {mode === 'manual' ? 'Videos Guardados' : 'Lista de Entrevistas y Contenido'}
+              </h4>
+              <p className="text-[11px] text-neutral-400">
+                Tocá cualquier tarjeta para reproducirla en la pantalla principal
+              </p>
+            </div>
+            <span className="text-[10px] bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg text-neutral-300 font-mono">
+              {videos.length} {videos.length === 1 ? 'Video' : 'Videos'}
+            </span>
           </div>
 
-          <div className="flex overflow-x-auto gap-3 pb-4 snap-x scrollbar-thin scrollbar-thumb-white/10 hide-scrollbar" id="thumbnails-track">
-            {videos.map((item, idx) => (
-              <div key={item.id} className="relative flex-shrink-0 snap-center">
-                <button
-                  onClick={() => setActiveIndex(idx)}
-                  className={`relative flex-shrink-0 w-40 md:w-60 aspect-video rounded-2xl overflow-hidden border-2 transition-all duration-300 text-left group/thumb
-                    ${activeIndex === idx ? 'border-atlas-gold shadow-[0_0_20px_rgba(253,185,49,0.3)] scale-100' : 'border-white/5 scale-95 opacity-60 hover:opacity-100'}`}
+          {/* Responsive Stacked Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4" id="video-cards-grid">
+            {videos.map((item, idx) => {
+              const isPlaying = activeIndex === idx;
+              return (
+                <div 
+                  key={item.id}
+                  onClick={() => {
+                    setActiveIndex(idx);
+                    const player = document.getElementById('main-video-player');
+                    if (player) {
+                      player.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }}
+                  className={`group relative rounded-2xl overflow-hidden border transition-all duration-300 cursor-pointer p-3 flex flex-col justify-between gap-3 text-left
+                    ${isPlaying 
+                      ? 'bg-neutral-900 border-atlas-gold shadow-[0_0_25px_rgba(253,185,49,0.2)]' 
+                      : 'bg-neutral-950/70 border-white/10 hover:border-white/25 hover:bg-neutral-900/80'}`}
                 >
-                  <img 
-                    src={item.thumbnail} 
-                    className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" 
-                    alt={item.title} 
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-3">
-                    <p className="text-white font-bold text-[10px] md:text-xs line-clamp-2 leading-snug">
-                      {item.title}
-                    </p>
-                  </div>
-                  <div className="absolute top-2 right-2 w-7 h-7 bg-red-600 rounded-full flex items-center justify-center text-white shadow-lg opacity-0 group-hover/thumb:opacity-100 transition-opacity">
-                    <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                  </div>
-                </button>
+                  {/* Thumbnail with 16:9 ratio */}
+                  <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black shrink-0">
+                    <img 
+                      src={item.thumbnail} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      alt={item.title} 
+                      referrerPolicy="no-referrer"
+                    />
+                    
+                    {/* Play Overlay */}
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110
+                        ${isPlaying ? 'bg-atlas-gold text-black' : 'bg-red-600'}`}>
+                        <Play className="w-4 h-4 fill-current ml-0.5" />
+                      </div>
+                    </div>
 
-                {/* Direct quick delete icon for manual videos */}
-                {mode === 'manual' && (
-                  <button
-                    onClick={(e) => handleDeleteManualVideo(item.id, e)}
-                    className="absolute -top-1.5 -right-1.5 w-6 h-6 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all z-20 border border-white/20"
-                    title="Eliminar este video"
-                  >
-                    <X className="w-3 h-3" />
-                  </button>
-                )}
-              </div>
-            ))}
+                    {/* Status Pill */}
+                    {isPlaying && (
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-atlas-gold text-black font-black text-[9px] uppercase tracking-wider flex items-center gap-1 shadow-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-ping" />
+                        <span>En Reproducción</span>
+                      </div>
+                    )}
+
+                    {/* Delete button if in manual mode */}
+                    {mode === 'manual' && (
+                      <button
+                        onClick={(e) => handleDeleteManualVideo(item.id, e)}
+                        className="absolute top-2 right-2 w-7 h-7 bg-red-600 hover:bg-red-700 text-white rounded-lg flex items-center justify-center shadow-lg transition-transform active:scale-95"
+                        title="Eliminar este video"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Card Info */}
+                  <div className="space-y-1.5">
+                    <h5 className={`font-bold text-xs sm:text-sm line-clamp-2 leading-snug transition-colors
+                      ${isPlaying ? 'text-atlas-gold' : 'text-white group-hover:text-amber-300'}`}>
+                      {item.title}
+                    </h5>
+                    <div className="flex items-center justify-between text-[10px] text-neutral-400 font-medium pt-1 border-t border-white/5">
+                      <span className="font-mono">{formatDate(item.publishedAt)}</span>
+                      <span className="text-teal-400 font-bold uppercase tracking-wider text-[9px]">Atlas Salud</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
         

@@ -25,8 +25,8 @@ export default function Philosophy() {
               Nuestra Filosofía / El Método
             </h2>
             
-            <h3 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tighter mb-6 sm:mb-10 leading-tight">
-              Misión & <span className="text-transparent bg-clip-text bg-gradient-to-r from-atlas-gold to-atlas-orange">Experiencia</span>
+            <h3 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tighter mb-6 sm:mb-10 leading-tight text-white">
+              Misión & <span className="text-amber-400 inline-block font-black">Experiencia</span>
             </h3>
             
             <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-atlas-white/80 leading-relaxed font-medium">
